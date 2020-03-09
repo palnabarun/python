@@ -17,7 +17,7 @@ from setuptools import setup
 # Do not edit these constants. They will be updated automatically
 # by scripts/update-client.sh.
 CLIENT_VERSION = "11.0.0-snapshot"
-PACKAGE_NAME = "kubernetes"
+PACKAGE_NAME = "kubernetes-palnabarun-test"
 DEVELOPMENT_STATUS = "4 - Beta"
 
 # To install the library, run the following
@@ -50,9 +50,9 @@ setup(
     version=CLIENT_VERSION,
     description="Kubernetes python client",
     author_email="",
-    author="Kubernetes",
+    author="palnabarun",
     license="Apache License Version 2.0",
-    url="https://github.com/kubernetes-client/python",
+    url="https://github.com/palnabarun/python",
     keywords=["Swagger", "OpenAPI", "Kubernetes"],
     install_requires=REQUIRES,
     tests_require=TESTS_REQUIRES,
