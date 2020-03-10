@@ -8,35 +8,64 @@ stages:
   - run tests
   - deploy to PyPI
 
+  install:
+- pip install tox
+
 jobs:
   include:
   - stage: run tests
     python: 2.7
     env: TOXENV=py27
+    script:
+      - tox
   - python: 2.7
     env: TOXENV=py27-functional
+    script:
+      - tox
   - python: 2.7
     env: TOXENV=update-pycodestyle
+    script:
+      - tox
   - python: 3.7
     env: TOXENV=docs
+    script:
+      - tox
   - python: 2.7
     env: TOXENV=coverage,codecov
+    script:
+      - tox
   - python: 3.5
     env: TOXENV=py35
+    script:
+      - tox
   - python: 3.5
     env: TOXENV=py35-functional
+    script:
+      - tox
   - python: 3.6
     env: TOXENV=py36
+    script:
+      - tox
   - python: 3.6
     env: TOXENV=py36-functional
+    script:
+      - tox
   - python: 3.7
     env: TOXENV=py37
+    script:
+      - tox
   - python: 3.7
     env: TOXENV=py37-functional
+    script:
+      - tox
   - python: 3.8
     env: TOXENV=py38
+    script:
+      - tox
   - python: 3.8
     env: TOXENV=py38-functional
+    script:
+      - tox
   - stage: deploy to PyPI
     deploy:
       provider: pypi
@@ -48,9 +77,3 @@ jobs:
         tags: true
         repo: palnabarun/python
       distributions: sdist bdist_wheel
-
-install:
-- pip install tox
-
-script:
-- tox
