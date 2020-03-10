@@ -1,10 +1,17 @@
 language: python
 dist: xenial
+
 services:
 - docker
-matrix:
+
+stages:
+  - run tests
+  - deploy to PyPI
+
+jobs:
   include:
-  - python: 2.7
+  - stage: run tests
+    python: 2.7
     env: TOXENV=py27
   - python: 2.7
     env: TOXENV=py27-functional
@@ -30,10 +37,24 @@ matrix:
     env: TOXENV=py38
   - python: 3.8
     env: TOXENV=py38-functional
+  - stage: deploy to PyPI
+    deploy:
+      provider: pypi
+      user: __token__
+      password:
+        secure: gY5Rixj7mWHC9XP5qV5DfWGdX4ZVwCEUElnQA2OeIg235I3eMBqRFM4Q/SKwAG2DzgIWNKsXXVQsZHp7BAjWFMFVQloiU7zohuBRToJUim9U1RaqAjUIr4OU7JPtXenAl5zyyBdywvJiG8UZ4wmt1DBYtdpozQvOwDXvOxNTmElKh5mfDhiSsipmFr2198NtIhiRVC+CZliZsi6osUkt+G6yl9CW+SJU3otgzdaS+VBP26HO0kWHMJiDKvQoIl/Q50IqJUWieFhCLh7lSV71VNVEmM4bMcYK8cAv3zMZHo6REKHF7xrF5tzYMXqpmEGt6L798d2H4BISr6BIlYgiYCatjyE9hxih9iBzGs0XaGUUFD8u1iuzOQI76a5dapG/DixQrGD2o9Gn/Qw6Zp9USIuKZSWUn5hSobwxJUKVNy+afpaJNQUb2W9Hj+jMXAnBDodCzo3nu+QF8GN72cmk3uqVyKUVABtI4kNe3qcEx3DyKfoh7aqJrgydeaRwESKuZ41l5CA+vqXSbbNW8z1MYDYgVdwEyRFsLg6aQk5pPsxuiILaaGy13TUndhuC+GuKcW6wCDf6WpUAwwGAF8+sz4hZ1pfSUdE3F8nfDBW3Bv+G9cB/cKkWJ2vOd9httRrvir8qUc/xPP5aW4pacnfNCQ04Iep/k4PCAdYJDtVGhCY=
+      skip_existing: true
+      on:
+        tags: true
+        repo: kubernetes-client/python
+      distributions: sdist bdist_wheel
+
 install:
 - pip install tox
+
 script:
 - tox
+
 deploy:
   provider: pypi
   user: __token__
