@@ -54,14 +54,3 @@ install:
 
 script:
 - tox
-
-deploy:
-  provider: pypi
-  user: __token__
-  password:
-    secure: i2MuG6UQkOaH8SVPyRrM3SSWaanVKYHQ8omuTX1PMYQ9WF1xXYnA05K+bHjF1A2YFuXiQPTyE7OBjS5K07oWmhiwI1TYqKV9uAlkhrwxtmYl78efw7gpnKtFyhBcmlT0+wDo349HjyEnIhfvNrHxzzuSpP1oIXzmHokmgzxJzokpnQIYJcJppBcp4w/+RBUZdCvSf05gPQdYdzpLVvhJSKWaj3a1MXJbvz7f4sDfjyzUWGBDvg6lEM9WjlFeiu2KLM1h5FYgrpVBG+Ytl/WeyRRcIKfghqbyJ2sHHDqa7zftfgM/PkQgdWGARfe5V+kb66Xxptj3hrbILKMJ/kiUTQEOS6XGcnOd8purOfKJCX42aUHFUoJIUQk0thNX/y4mJEU1v/LQjBQR/WQnZNjANMnj/Mc7ORfF2a8eRPyop+sZ808MLlprZIeuNp4kM3q6tWxtfPREWfSMwSj+en7MEsU8hdogBch1A7Chm/BPckNKaYRuGvXYKmlr+EfezvdmvurT84hIlAjdVFGcmshv8f9ECp479nPDcH3vaRrt8kqqUzERB4ebGVPviC8qwjX+/R9xfBJeFs4Zo1VTOSsTmG9yJZk/PPbef6F1awLgBZnFIrmi5BZV8fDC78helDMOZTPDy+MLvA8wfxF5cQfz6q4LkFLkRVzvJC5/WcrILIc=
-  skip_existing: true
-  on:
-    tags: true
-    repo: palnabarun/python
-  distributions: sdist bdist_wheel
